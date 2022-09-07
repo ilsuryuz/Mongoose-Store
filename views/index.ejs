@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-	</head>
-	<body>
-        <nav>
-            <a href="/store/new">Add a New Product</a>
-        </nav>
-		<h1>Products index page</h1>
-        <div>
-			<% products.forEach(product => { %>
-                <div>
-                    <a href="/books/<%=product._id; %>"> <%=product.name; %> </a>
-                </div>
-			<% }) %>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    <nav>
+        <a href="/store/new">Add a New Product</a>
+    </nav>
+    <div>
+        <h1>Products index page</h1>
     </div>
-	</body>
+    <div>
+        <% products.forEach(product=> { %>
+            <a href="/books/<%=product._id; %>">
+                <div>
+                    <h3>
+                        <%=product.name; %>
+                    </h3>
+                    <img src="<%=product.img%>" alt="<%=product.name%>">
+                    <ul>
+                        <li>
+                            <%=product.qty%> in stock
+                        </li>
+                        <li>
+                            <%=product.price%> V-Bucks
+                        </li>
+                    </ul>
+            </a>
+    </div>
+    <% }) %>
+        </div>
+</body>
+
 </html>

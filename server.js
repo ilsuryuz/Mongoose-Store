@@ -26,6 +26,14 @@ app.listen(PORT, () => console.log(`server is listning on port: ${PORT}`));
 // ** Body parser middleware: give us access to req.body **
 app.use(express.urlencoded({ extended: true }));
 
+// ** SEED **
+const productSeed = require('./models/productSeed');
+app.get('/store/seed', (req, res) => {
+    Product.deleteMany({}, (error, allProducts) => {});
+    Product.create(productSeed, (error, data) => {
+		res.redirect('/store');
+	});
+});
 // ** Index **
 app.get('/store', (req, res) => {
     Product.find({}, (error, allProducts) => {
