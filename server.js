@@ -47,6 +47,9 @@ app.get('/store', (req, res) => {
 // ** SEED **
 
 // ** NEW **
+app.get('/store/new', (req, res) => {
+    res.render('new.ejs');
+});
 
 // ** DELETE **
 
