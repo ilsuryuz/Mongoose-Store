@@ -63,6 +63,17 @@ app.delete("/store/:id", (req, res) => {
 })
 
 // ** UPDATE **
+app.put("/store/:id/", (req, res) => {
+    Product.findByIdAndUpdate(
+        req.params.id, 
+        req.body, 
+        {
+            new: true,
+        },
+        (err, updatedProduct) => {
+        res.redirect(`/store/${req.params.id}`)
+    })
+})
 
 // ** CREATE **
 app.post('/store', (req, res) => {
@@ -72,7 +83,13 @@ app.post('/store', (req, res) => {
 });
 
 // ** EDIT **
-
+app.get("/store/:id/edit", (req, res) => {
+    Product.findById(req.params.id, (error, foundProduct) => {
+      res.render("edit.ejs", {
+        product: foundProduct,
+      })
+    })
+  })
 // ** SHOW **
 app.get('/store/:id', (req, res) => {
 	Product.findById(req.params.id, (err, foundProduct) => {

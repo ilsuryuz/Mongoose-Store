@@ -23,7 +23,7 @@
             <p><%= product.description%></p>
             <h5>Cost: <%=product.price%></h5>
             <h3><%=product.qty%> in stock</h3>
-            <form action="/Store//edit">
+            <form action="/Store/<%=product._id%>/edit">
                 <input type="submit" value="Edit Product" />
               </form>
               <form action="/store/<%=product._id%>?_method=DELETE" method="POST">
