@@ -45,6 +45,11 @@ app.get('/store', (req, res) => {
 // ** UPDATE **
 
 // ** CREATE **
+app.post('/store', (req, res) => {
+    Product.create(req.body, (error, createdProduct) => {
+        res.redirect('/store');
+    });
+});
 
 // ** EDIT **
 

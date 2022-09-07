@@ -9,5 +9,12 @@
             <a href="/store/new">Add a New Product</a>
         </nav>
 		<h1>Products index page</h1>
+        <div>
+			<% products.forEach(product => { %>
+                <div>
+                    <a href="/books/<%=product._id; %>"> <%=product.name; %> </a>
+                </div>
+			<% }) %>
+    </div>
 	</body>
 </html>
