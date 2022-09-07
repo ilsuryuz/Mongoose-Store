@@ -1,5 +1,6 @@
 // ** Dependencies **
 const express = require('express');
+const methodOverride = require("method-override");
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
@@ -25,6 +26,8 @@ app.listen(PORT, () => console.log(`server is listning on port: ${PORT}`));
 // ** Middleware **
 // ** Body parser middleware: give us access to req.body **
 app.use(express.urlencoded({ extended: true }));
+// ** Method-override **
+app.use(methodOverride("_method"))
 
 // ** SEED **
 const productSeed = require('./models/productSeed');
@@ -52,6 +55,12 @@ app.get('/store/new', (req, res) => {
 });
 
 // ** DELETE **
+app.delete("/store/:id", (req, res) => {
+    Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
+        console.log("Deleted: "+deletedProduct)
+        res.redirect('/store')
+    })
+})
 
 // ** UPDATE **
 
