@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <div>
     <nav>
         <a href="/store/new">Add a New Product</a>
     </nav>
@@ -15,7 +16,7 @@
     </div>
     <div>
         <% products.forEach(product=> { %>
-            <a href="/books/<%=product._id; %>">
+            <a href="/store/<%=product._id; %>">
                 <div>
                     <h3>
                         <%=product.name; %>
@@ -30,6 +31,9 @@
                         </li>
                     </ul>
             </a>
+            <form action="/store//">
+                <input type="submit" value="BUY" />
+              </form>
     </div>
     <% }) %>
         </div>

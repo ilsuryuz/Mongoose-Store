@@ -62,3 +62,10 @@ app.post('/store', (req, res) => {
 // ** EDIT **
 
 // ** SHOW **
+app.get('/store/:id', (req, res) => {
+	Product.findById(req.params.id, (err, foundProduct) => {
+		res.render('show.ejs', {
+			product: foundProduct,
+		});
+	});
+});
