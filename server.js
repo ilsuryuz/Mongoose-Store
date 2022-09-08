@@ -74,6 +74,14 @@ app.put("/store/:id/", (req, res) => {
         res.redirect(`/store/${req.params.id}`)
     })
 })
+// ** Route for buy button **
+app.put("/store/:id/buy", (req, res) => {
+    Product.findById(req.params.id, (err, foundProduct) => {
+        foundProduct.qty -= 1
+        foundProduct.save()
+        res.redirect('/store')
+    })
+})
 
 // ** CREATE **
 app.post('/store', (req, res) => {
