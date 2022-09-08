@@ -1,0 +1,31 @@
+.top {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+    outline: 5px solid white;
+    margin: 0 15px 15px 15px;
+    font-size: 80px;
+}
+.top h1 {
+    font-weight:bolder;
+    color: white;
+    margin: 0;
+    padding: 0 100px 0 100px;
+}
+.form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    outline: 5px solid white;
+    margin: 0 15px 15px 15px;
+}
+.inputs {
+    width: 200px;
+    height: auto;
+}

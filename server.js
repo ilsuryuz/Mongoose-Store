@@ -27,7 +27,11 @@ app.listen(PORT, () => console.log(`server is listning on port: ${PORT}`));
 // ** Body parser middleware: give us access to req.body **
 app.use(express.urlencoded({ extended: true }));
 // ** Method-override **
-app.use(methodOverride("_method"))
+app.use(methodOverride("_method"));
+// ** Public **
+app.use('/Public', express.static('Public'));
 // ** Controller **
-app.use('/store', storeController)
+app.use('/store', storeController);
+
+
 

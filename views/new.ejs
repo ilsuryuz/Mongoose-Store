@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Product List</title>
-	</head>
+<!-- Head Element -->
+<%- include('./partials/head.ejs')%>
 	<body>
-        <div>
+        <div class="top">
 		<h1>New Product</h1>
     </div>
-    <div>
+    <div class="form">
 		<form action="/store" method="POST">
-			Name: <input type="text" name="name" /><br />
-			Image link: <input type="text" name="img" /><br />
-			Description: <input type="text" name="description" /><br />
-            Price: <input type="number" name="price" /><br />
-            Quantity: <input type="number" name="qty" /><br />
+			<div class="inputs">
+			<label for="name">Name: </label>
+			<input type="text" name="name" placeholder="NAME"/><br />
+		</div>
+			<div class="inputs">
+			<label for="img">Image Link: </label>
+			<input type="text" name="img" placeholder="IMAGE"/><br />
+		</div>
+			<div class="inputs">
+			<label for="description">Description: </label>
+			<input type="text" name="description" placeholder="DESCRIPTION"/><br />
+		</div>
+			<div class="inputs">
+			<label for="price">Price: </label>
+            <input type="number" name="price" placeholder="PRICE"/><br />
+		</div>
+			<div class="inputs">
+			<label for="qty">Quantity: </label>
+            <input type="number" name="qty" placeholder="QUANTITY"/><br />
+		</div>
 			<input type="submit" name="" value="Add Product" />
 		</form>
     </div>
+	<%- include('./partials/footer.ejs')%>
 	</body>
-	</body>
+
 </html>
 

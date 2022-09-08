@@ -1,48 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Head Element -->
+<%- include('./partials/head.ejs')%>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-</head>
-
-<body>
-    <div>
-        <nav>
-            <a href="/store">Back to Store</a>
-        </nav>
-        <div>
-            <h1>
-                <%=product.name %>
-            </h1>
+    <body>
+        <div class="top">
+            <form action="/store">
+                <input type="submit" value="Back to Store" />
+            </form>
         </div>
-        <div>
-            <img src="<%=product.img%>" alt="<%=product.name%>">
-            <p>
-                <%= product.description%>
-            </p>
-            <h4>Cost: <%=product.price%>
-            </h4>
-            <% if (product.qty <=0) { %>
-                <h4>Out of stock</h4>
-                <% } else { %>
-                    <h4>
-                        <%=product.qty%>
-                    </h4>
-                    <form action="/store/<%=product._id%>/buy?_method=PUT" method="POST">
-                        <input type="submit" value="BUY" />
-                    </form>
-                    <% } %>
-                        <form action="/Store/<%=product._id%>/edit">
-                            <input type="submit" value="Edit Product" />
+        <div class="product">
+            <div class="subProduct">
+                <h1>
+                    <%=product.name %>
+                </h1>
+                <img src="<%=product.img%>" alt="<%=product.name%>">
+                <p>
+                    <%= product.description%>
+                </p>
+                <h4>Cost: <%=product.price%>
+                </h4>
+                <% if (product.qty <=0) { %>
+                    <h4 id="outOfStock">Out of stock</h4>
+                    <% } else { %>
+                        <h4>
+                            <%=product.qty%> in stock
+                        </h4>
+                        <form action="/store/<%=product._id%>/buy?_method=PUT" method="POST">
+                            <input type="submit" value="BUY" />
                         </form>
-                        <form action="/store/<%=product._id%>?_method=DELETE" method="POST">
-                            <input type="submit" value="DELETE" />
-                        </form>
+                        <% } %>
+                        <div class="productButtons">
+                            <form action="/Store/<%=product._id%>/edit">
+                                <input type="submit" value="Edit Product" />
+                            </form>
+                            <form action="/store/<%=product._id%>?_method=DELETE" method="POST">
+                                <input type="submit" value="DELETE" />
+                            </form>
+                        </div>
+            </div>
         </div>
-    </div>
-</body>
+        <%- include('./partials/footer.ejs')%>
+    </body>
 
 </html>

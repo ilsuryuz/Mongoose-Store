@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html>
+<!-- Head Element -->
+<%- include('./partials/head.ejs')%>
 
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-
-<body>
-    <div>
-        <div>
-            <h1>Products index page</h1>
-            <nav>
-                <form action="/store/new">
-                    <input type="submit" value="Add Product" />
-                </form>
-            </nav>
+    <body>
+        <div class="top">
+            <h1>FOSH</h1>
+            <form action="/store/new">
+                <input type="submit" value="Add Product" />
+            </form>
         </div>
-        <div>
+        <div class="selection">
             <% products.forEach(product=> { %>
                 <a href="/store/<%=product._id; %>">
-                    <div>
+                <div class="product">
                         <h3>
                             <%=product.name; %>
                         </h3>
@@ -27,10 +21,13 @@
                         <ul>
                             <% if (product.qty <=0) { %>
                                 <li>
-                                    Out of stock
+                                    <%=product.qty%> in stock
                                 </li>
                                 <li>
                                     <%=product.price%> V-Bucks
+                                </li>
+                                <li id="outOfStock">
+                                    This item is currently out of stock.
                                 </li>
                                 <% } else { %>
                                     <li>
@@ -39,17 +36,17 @@
                                     <li>
                                         <%=product.price%> V-Bucks
                                     </li>
-                                    <li>
-                </a>
-                <form action="/store/<%=product._id%>/buy?_method=PUT" method="POST">
-                    <input type="submit" value="BUY" />
-                </form>
-                </li>
-                <% } %>
+                    <li>
+                        <form action="/store/<%=product._id%>/buy?_method=PUT" method="POST">
+                            <input type="submit" value="BUY" />
+                        </form>
+                    </li>
                     </ul>
+                    <% } %>
+                </div>
+            </a>
+                <% }) %>
         </div>
-        <% }) %>
-    </div>
-</body>
-
+        <%- include('./partials/footer.ejs')%>
+    </body>
 </html>

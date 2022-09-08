@@ -20,12 +20,17 @@ storeRouter.get('/', (req, res) => {
     Product.find({}, (error, allProducts) => {
         res.render('index.ejs', {
             products: allProducts,
+            tabTitle: "Products",
+            style: "index",
         });
     });
 });
 // ** NEW **
 storeRouter.get('/new', (req, res) => {
-    res.render('new.ejs');
+    res.render('new.ejs', {
+        tabTitle: "New",
+        style: "new",
+    });
 });
 
 // ** DELETE **
@@ -69,6 +74,8 @@ storeRouter.get("/:id/edit", (req, res) => {
     Product.findById(req.params.id, (error, foundProduct) => {
       res.render("edit.ejs", {
         product: foundProduct,
+        tabTitle: "Edit " + foundProduct.name,
+        style: "edit",
       });
     });
   });
@@ -77,6 +84,8 @@ storeRouter.get('/:id', (req, res) => {
 	Product.findById(req.params.id, (err, foundProduct) => {
 		res.render('show.ejs', {
 			product: foundProduct,
+            tabTitle: foundProduct.name,
+            style: "show",
 		});
 	});
 });
