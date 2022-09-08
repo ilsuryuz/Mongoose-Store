@@ -8,35 +8,48 @@
 
 <body>
     <div>
-    <nav>
-        <a href="/store/new">Add a New Product</a>
-    </nav>
-    <div>
-        <h1>Products index page</h1>
-    </div>
-    <div>
-        <% products.forEach(product=> { %>
-            <a href="/store/<%=product._id; %>">
-                <div>
-                    <h3>
-                        <%=product.name; %>
-                    </h3>
-                    <img src="<%=product.img%>" alt="<%=product.name%>">
-                    <ul>
-                        <li>
-                            <%=product.qty%> in stock
-                        </li>
-                        <li>
-                            <%=product.price%> V-Bucks
-                        </li>
-                    </ul>
-            </a>
-            <form action="/store/<%=product._id%>/buy?_method=PUT" method="POST">
-                <input type="submit" value="BUY" />
-              </form>
-    </div>
-    <% }) %>
+        <div>
+            <h1>Products index page</h1>
+            <nav>
+                <form action="/store/new">
+                    <input type="submit" value="Add Product" />
+                </form>
+            </nav>
         </div>
+        <div>
+            <% products.forEach(product=> { %>
+                <a href="/store/<%=product._id; %>">
+                    <div>
+                        <h3>
+                            <%=product.name; %>
+                        </h3>
+                        <img src="<%=product.img%>" alt="<%=product.name%>">
+                        <ul>
+                            <% if (product.qty <=0) { %>
+                                <li>
+                                    Out of stock
+                                </li>
+                                <li>
+                                    <%=product.price%> V-Bucks
+                                </li>
+                                <% } else { %>
+                                    <li>
+                                        <%=product.qty%> in stock
+                                    </li>
+                                    <li>
+                                        <%=product.price%> V-Bucks
+                                    </li>
+                                    <li>
+                </a>
+                <form action="/store/<%=product._id%>/buy?_method=PUT" method="POST">
+                    <input type="submit" value="BUY" />
+                </form>
+                </li>
+                <% } %>
+                    </ul>
+        </div>
+        <% }) %>
+    </div>
 </body>
 
 </html>
